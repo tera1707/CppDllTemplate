@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>DllTest</id>
+    <version>1.0.0</version>
+    <authors>MyName</authors>
+    <owners>MyOrg</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>C++ DLL library package Test</description>
+  </metadata>
+  <files>
+    <file src="include\*.h" target="include" />
+    <file src="lib\native\*.dll" target="lib\native" />
+    <file src="build\native\*.props" target="build\native" />
+    <file src="build\native\*.targets" target="build\native" />
+  </files>
+</package>
+
+
+
