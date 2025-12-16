@@ -63,8 +63,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /Y /S /I "$(OutDir)*.dll" "$(SolutionDir)nupkg\lib\native"
+xcopy /Y /S /I  "$(ProjectDir)DllTest.h" "$(SolutionDir)nupkg\include"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -84,6 +84,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /S /I "$(OutDir)*.dll" "$(SolutionDir)nupkg\lib\native"
+xcopy /Y /S /I  "$(ProjectDir)DllTest.h" "$(SolutionDir)nupkg\include"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DllTest.h" />
