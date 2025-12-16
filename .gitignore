@@ -416,3 +416,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/nupkg/include/DllTest.h
+/nupkg/lib/native/DllTest.dll
+/nuget.exe
