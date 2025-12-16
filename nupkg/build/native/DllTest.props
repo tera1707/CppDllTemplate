@@ -6,5 +6,15 @@
         $(MSBuildThisFileDirectory)..\..\include;%(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
     </ClCompile>
+	<Link>
+		<!-- lib フォルダをライブラリ検索パスに追加 -->
+		<AdditionalLibraryDirectories>
+			$(MSBuildThisFileDirectory)..\..\lib\native;%(AdditionalLibraryDirectories)
+		</AdditionalLibraryDirectories>
+		<!-- 必要な .lib を追加 -->
+		<AdditionalDependencies>
+			DllTest.lib;%(AdditionalDependencies)
+		</AdditionalDependencies>
+	</Link>
   </ItemDefinitionGroup>
 </Project>
