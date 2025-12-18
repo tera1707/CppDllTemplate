@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>DllTest</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>MyName</authors>
     <owners>MyOrg</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,8 +10,14 @@
   </metadata>
   <files>
     <file src="include\*.h" target="include" />
-	<file src="lib\native\*.dll" target="lib\native" />
-	<file src="lib\native\*.lib" target="lib\native" />
+    <file src="lib\native\x86\Debug\*.dll" target="lib\native\x86\Debug" />
+    <file src="lib\native\x86\Debug\*.lib" target="lib\native\x86\Debug" />
+    <file src="lib\native\x86\Release\*.dll" target="lib\native\x86\Release" />
+    <file src="lib\native\x86\Release\*.lib" target="lib\native\x86\Release" />
+    <file src="lib\native\x64\Debug\*.dll" target="lib\native\x64\Debug" />
+    <file src="lib\native\x64\Debug\*.lib" target="lib\native\x64\Debug" />
+    <file src="lib\native\x64\Release\*.dll" target="lib\native\x64\Release" />
+    <file src="lib\native\x64\Release\*.lib" target="lib\native\x64\Release" />
     <file src="build\native\*.props" target="build\native" />
     <file src="build\native\*.targets" target="build\native" />
   </files>

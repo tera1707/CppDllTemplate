@@ -1,20 +1,71 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemDefinitionGroup>
+
+  <!-- Debug + x86 -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug' and '$(Platform)'=='Win32'">
     <ClCompile>
-      <!-- include フォルダを自動追加 -->
       <AdditionalIncludeDirectories>
         $(MSBuildThisFileDirectory)..\..\include;%(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
     </ClCompile>
-	<Link>
-		<!-- lib フォルダをライブラリ検索パスに追加 -->
-		<AdditionalLibraryDirectories>
-			$(MSBuildThisFileDirectory)..\..\lib\native;%(AdditionalLibraryDirectories)
-		</AdditionalLibraryDirectories>
-		<!-- 必要な .lib を追加 -->
-		<AdditionalDependencies>
-			DllTest.lib;%(AdditionalDependencies)
-		</AdditionalDependencies>
-	</Link>
+    <Link>
+      <AdditionalLibraryDirectories>
+        $(MSBuildThisFileDirectory)..\..\lib\native\x86\Debug;%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+        DllTest.lib;%(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
-</Project>
+
+  <!-- Release + x86 -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release' and '$(Platform)'=='Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>
+        $(MSBuildThisFileDirectory)..\..\include;%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>
+        $(MSBuildThisFileDirectory)..\..\lib\native\x86\Release;%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+        DllTest.lib;%(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Debug + x64 -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug' and '$(Platform)'=='x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>
+        $(MSBuildThisFileDirectory)..\..\include;%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>
+        $(MSBuildThisFileDirectory)..\..\lib\native\x64\Debug;%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+        DllTest.lib;%(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Release + x64 -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release' and '$(Platform)'=='x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>
+        $(MSBuildThisFileDirectory)..\..\include;%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>
+        $(MSBuildThisFileDirectory)..\..\lib\native\x64\Release;%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+        DllTest.lib;%(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+

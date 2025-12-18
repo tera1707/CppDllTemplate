@@ -2,9 +2,14 @@
 chcp 932
 setlocal
 
+call "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+
+cd %~dp0
+
 REM === 1. nuget.exe を同じ階層にダウンロード ===
 set NUGET_URL=https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 set NUGET_EXE=%~dp0nuget.exe
+set DLLPJPATH=%~dp0DllTest\DllTest.vcxproj
 
 if not exist "%NUGET_EXE%" (
     echo Downloading nuget.exe...
@@ -13,7 +18,27 @@ if not exist "%NUGET_EXE%" (
     echo nuget.exe already exists.
 )
 
-REM === 2. nupkg フォルダ内の DllTest.nuspec を使って nupkg を作成 ===
+
+REM === ビルド実施後、必要成果物ファイルをnupkg フォルダにコピー ===
+xcopy /Y /S /I  "%~dp0DllTest\DllTest.h" "%~dp0nupkg\include\"
+
+MSBuild %DLLPJPATH% /t:clean;rebuild /p:Configuration=Release;Platform="x64"
+xcopy /Y /S /I "%~dp0DllTest\x64\Release\*.dll" "%~dp0nupkg\lib\native\x64\Release\"
+xcopy /Y /S /I "%~dp0DllTest\x64\Release\*.lib" "%~dp0nupkg\lib\native\x64\Release\"
+
+MSBuild %DLLPJPATH% /t:clean;rebuild /p:Configuration=Release;Platform="Win32"
+xcopy /Y /S /I "%~dp0DllTest\Release\*.dll" "%~dp0nupkg\lib\native\x86\Release\"
+xcopy /Y /S /I "%~dp0DllTest\Release\*.lib" "%~dp0nupkg\lib\native\x86\Release\"
+
+MSBuild %DLLPJPATH% /t:clean;rebuild /p:Configuration=Debug;Platform="x64"
+xcopy /Y /S /I "%~dp0DllTest\x64\Debug\*.dll" "%~dp0nupkg\lib\native\x64\Debug\"
+xcopy /Y /S /I "%~dp0DllTest\x64\Debug\*.lib" "%~dp0nupkg\lib\native\x64\Debug\"
+
+MSBuild %DLLPJPATH% /t:clean;rebuild /p:Configuration=Debug;Platform="Win32"
+xcopy /Y /S /I "%~dp0DllTest\Debug\*.dll" "%~dp0nupkg\lib\native\x86\Debug\"
+xcopy /Y /S /I "%~dp0DllTest\Debug\*.lib" "%~dp0nupkg\lib\native\x86\Debug\"
+
+REM === nupkg フォルダ内の DllTest.nuspec を使って nupkg を作成 ===
 set NUSPEC=%~dp0nupkg\DllTest.nuspec
 
 if exist "%NUSPEC%" (

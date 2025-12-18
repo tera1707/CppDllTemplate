@@ -20,6 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\DllTest.dll" />
     <None Include="packages.config" />
   </ItemGroup>
 </Project>

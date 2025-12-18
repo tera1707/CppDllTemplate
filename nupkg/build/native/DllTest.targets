@@ -1,8 +1,31 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\DllTest.dll">
-      <Link>DllTest.dll</Link>
+
+  <!-- Debug + x86 -->
+  <ItemGroup Condition="'$(Configuration)'=='Debug' and '$(Platform)'=='Win32'">
+    <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\x86\Debug\DllTest.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <!-- Release + x86 -->
+  <ItemGroup Condition="'$(Configuration)'=='Release' and '$(Platform)'=='Win32'">
+    <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\x86\Release\DllTest.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Debug + x64 -->
+  <ItemGroup Condition="'$(Configuration)'=='Debug' and '$(Platform)'=='x64'">
+    <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\x64\Debug\DllTest.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Release + x64 -->
+  <ItemGroup Condition="'$(Configuration)'=='Release' and '$(Platform)'=='x64'">
+    <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\x64\Release\DllTest.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
